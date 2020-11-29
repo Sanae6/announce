@@ -1,0 +1,23 @@
+[package]
+name = "announce-au"
+description = "An implementation of the announcement server Among Us uses."
+version = "0.1.0"
+authors = ["Sanae <atmatm6000@outlook.com>"]
+edition = "2018"
+
+[[bin]]
+name = "announce_server"
+path = "src/bin.rs"
+required-features = ["binary"]
+
+[lib]
+name = "announce_au"
+path = "src/lib.rs"
+
+[dependencies]
+byteorder = "1.3.4"
+toml = { version = "0.5.7", optional = true }
+serde = { version = "1.0.117", features = ["derive"], optional = true}
+
+[features]
+binary = ["toml", "serde"]
