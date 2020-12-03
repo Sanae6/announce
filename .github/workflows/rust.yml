@@ -17,13 +17,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: announce
+            artifact_name: announce_server
             asset_name: announce-linux-amd64
           - os: windows-latest
-            artifact_name: announce.exe
+            artifact_name: announce_server.exe
             asset_name: announce-windows-amd64
           - os: macos-latest
-            artifact_name: announce
+            artifact_name: announce_server
             asset_name: announce-macos-amd64
 
     steps:
