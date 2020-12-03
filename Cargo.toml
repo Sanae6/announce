@@ -1,7 +1,7 @@
 [package]
 name = "announce-au"
 description = "An implementation of the announcement server Among Us uses."
-version = "0.1.0"
+version = "1.0.0"
 authors = ["Sanae <atmatm6000@outlook.com>"]
 edition = "2018"
 

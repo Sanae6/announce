@@ -5,7 +5,7 @@ use std::io::Cursor;
 use std::net::{IpAddr, SocketAddr, UdpSocket};
 use std::str::FromStr;
 
-use announce_au::{Data, HazelMessage, read_packet, write_packet};
+use announce_au::{Data, HazelMessage, read_packet, write_packet, FreeWeekendState};
 
 use crate::config::Config;
 
@@ -86,7 +86,7 @@ fn message_received(_length: usize, address: SocketAddr, state: &mut Server) -> 
                 if msgsend.is_empty() {
                     msgsend = &msg.default_message;
                 }
-                HazelMessage::Reliable((client.nonce, vec![Data::Announcement((mid, msgsend.clone()))]))
+                HazelMessage::Reliable((client.nonce, vec![Data::Announcement((mid, msgsend.clone())), Data::FreeWeekend(FreeWeekendState::Free)]))
             };
             //println!("write {:?}", packet);
             write_packet(packet, &mut buffer)?;
@@ -130,6 +130,12 @@ fn main() {
             Err(err) => {
                 eprintln!("{}", err)
             }
+        }
+        if !state.client_deletion.is_empty() {
+            for address in &state.client_deletion {
+                state.clients.remove(&address);
+            }
+            state.client_deletion.clear();
         }
     }
 }

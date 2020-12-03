@@ -6,8 +6,8 @@ port = 22024
 
 [message]
 # The unique id attached to each announcement, the id sent is calculated by '(id * 5) + language'.
+# This should be incremented on every announcement change if you are pushing this to users.
 # Language can be found in src/lib.rs.
-
 unique_id = 23
 # The default message used if any of the messages are empty strings
 default_message = '''12/01/2020
@@ -23,5 +23,5 @@ Read all about the v2020.12.1 update [https://sanae6.ca]here[].
 
 Happy Holidays!
 '''
-# Leave an entry empty (like the first one) to force it to use the default entry
-message = ["","Hola Mundo","Olá Mundo","안녕하세요 세상","Привет мир"]
+# Leave an entry empty (like the first one) to use the default entry
+message = ["[FF0000FF]XYZ[FFFFFF]ABC","Hola Mundo","Olá Mundo","안녕하세요 세상","Привет мир"]
