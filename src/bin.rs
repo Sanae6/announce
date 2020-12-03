@@ -5,33 +5,50 @@ use std::io::Cursor;
 use std::net::{IpAddr, SocketAddr, UdpSocket};
 use std::str::FromStr;
 
-use announce_au::{Data, HazelMessage, read_packet, write_packet, FreeWeekendState};
+use announce_au::{Data, FreeWeekendState, HazelMessage, read_packet, write_packet};
 
 use crate::config::Config;
 
 pub(crate) mod config {
-    use std::fs::read_to_string;
+    use std::fs::{read_to_string, write};
     use std::io;
 
-    use serde::Deserialize;
+    use serde::{Serialize, Deserialize};
 
-    #[derive(Deserialize, Clone)]
+    #[derive(Serialize, Deserialize, Clone)]
     pub struct Config {
         pub endpoint: Endpoint,
         pub message: Message,
     }
 
-    #[derive(Deserialize, Clone)]
+    #[derive(Serialize, Deserialize, Clone)]
     pub struct Endpoint {
         pub ip: String,
         pub port: Option<u16>,
     }
 
-    #[derive(Deserialize, Clone)]
+    #[derive(Serialize, Deserialize, Clone)]
     pub struct Message {
         pub unique_id: u32,
         pub default_message: String,
         pub message: [String; 5],
+    }
+
+    pub fn create_toml() -> io::Result<Config> {
+        let config = Config {
+            endpoint: Endpoint {
+                ip: "127.0.0.1".to_string(),
+                port: Some(22023)
+            },
+            message: Message {
+                unique_id: 0,
+                default_message: "Change this message in config.toml and restart!".to_string(),
+                message: ["".to_string(), "".to_string(), "".to_string(), "".to_string(), "".to_string()]
+            }
+        };
+        write("./config.toml", toml::to_string_pretty(&config).unwrap().as_str())?;
+
+        Ok(config)
     }
 
     pub fn load_toml() -> io::Result<Config> {
@@ -105,7 +122,7 @@ fn message_received(_length: usize, address: SocketAddr, state: &mut Server) -> 
 }
 
 fn main() {
-    let config: config::Config = config::load_toml().expect("Failed to load configuration!");
+    let config: config::Config = config::load_toml().unwrap_or_else(|_|config::create_toml().expect("Failed to create config"));
 
     let mut state = Server {
         clients: HashMap::new(),

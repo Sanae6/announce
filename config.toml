@@ -10,18 +10,8 @@ port = 22024
 # Language can be found in src/lib.rs.
 unique_id = 23
 # The default message used if any of the messages are empty strings
-default_message = '''12/01/2020
-
-Hey crewmates!
-
-Here are some updates for you:
-- Fixed the shop menu loading error on Android.
-- Christmas cheer is very near! Christmas-themed hats have been added for this month. Thanks for supporting us!
-- Server-side bug fixes.
-
-Read all about the v2020.12.1 update [https://sanae6.ca]here[].
-
-Happy Holidays!
+default_message = '''
+This message should be replaced in your config.toml!
 '''
 # Leave an entry empty (like the first one) to use the default entry
-message = ["[FF0000FF]XYZ[FFFFFF]ABC","Hola Mundo","Olá Mundo","안녕하세요 세상","Привет мир"]
+message = ["Hello World","Hola Mundo","Olá Mundo","안녕하세요 세상","Привет мир"]
