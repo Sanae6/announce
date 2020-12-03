@@ -23,3 +23,5 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         name: Update ${{ github.ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
