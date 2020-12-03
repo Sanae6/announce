@@ -122,7 +122,8 @@ fn message_received(_length: usize, address: SocketAddr, state: &mut Server) -> 
 }
 
 fn main() {
-    let config: config::Config = config::load_toml().unwrap_or_else(|_|config::create_toml().expect("Failed to create config"));
+    let config: config::Config = config::load_toml()
+        .unwrap_or_else(|_|config::create_toml().expect("Failed to create config"));
 
     let mut state = Server {
         clients: HashMap::new(),
