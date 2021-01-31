@@ -38,7 +38,7 @@ pub(crate) mod config {
         let config = Config {
             endpoint: Endpoint {
                 ip: "127.0.0.1".to_string(),
-                port: Some(22023)
+                port: Some(22024)
             },
             message: Message {
                 unique_id: 0,
