@@ -1,6 +1,6 @@
 [endpoint]
-# Required, IP address to host on, use 127.0.0.1 if you don't know what you're doing.
-ip = "127.0.0.1"
+# Required, IP address to host on, use 0.0.0.0 if you don't know what you're doing.
+ip = "0.0.0.0"
 # Optional, must be 22024 to work with no client changes
 port = 22024
 
