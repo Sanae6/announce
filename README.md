@@ -8,7 +8,8 @@ and store it in a folder
 put it in the same folder.
 3. Change the information in the config file, like the id used for caching and the messages you want to be sent to your users.
 4. Run the binary you downloaded, and start Among Us with your custom region selected.
-5. Profit.
+5. If forwarding out, make sure 22024 is port forwarded for UDP in your firewall like how an Among Us server would use UDP port 22023.
+6. Profit.
 
 ## Building
 1. [Install Rust](https://rustup.rs/)
