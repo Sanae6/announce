@@ -1,3 +1,6 @@
+# Depreciated
+Innersloth switched to serving their announcements through a web server, and the old Hazel implementation is now fully depreciated. I'm not updating this to support the new system since it would be a full rewrite.
+
 # announce-au
 A reimplementation of the protocol and server Innersloth uses to push announcements to Among Us uses.
 
